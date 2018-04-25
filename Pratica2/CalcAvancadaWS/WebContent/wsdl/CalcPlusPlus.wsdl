@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://if998.cin.ufpe.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://if998.cin.ufpe.br" xmlns:intf="http://if998.cin.ufpe.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://if998.cin.ufpe.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="raizQuadrada">
+    <complexType>
+     <sequence>
+      <element name="v" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="raizQuadradaResponse">
+    <complexType>
+     <sequence>
+      <element name="raizQuadradaReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="potencia">
+    <complexType>
+     <sequence>
+      <element name="v1" type="xsd:int"/>
+      <element name="v2" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="potenciaResponse">
+    <complexType>
+     <sequence>
+      <element name="potenciaReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="potenciaResponse">
+
+      <wsdl:part element="impl:potenciaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="raizQuadradaRequest">
+
+      <wsdl:part element="impl:raizQuadrada" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="potenciaRequest">
+
+      <wsdl:part element="impl:potencia" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="raizQuadradaResponse">
+
+      <wsdl:part element="impl:raizQuadradaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CalcPlusPlus">
+
+      <wsdl:operation name="raizQuadrada">
+
+         <wsdl:input message="impl:raizQuadradaRequest" name="raizQuadradaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:raizQuadradaResponse" name="raizQuadradaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="potencia">
+
+         <wsdl:input message="impl:potenciaRequest" name="potenciaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:potenciaResponse" name="potenciaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CalcPlusPlusSoapBinding" type="impl:CalcPlusPlus">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="raizQuadrada">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="raizQuadradaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="raizQuadradaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="potencia">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="potenciaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="potenciaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CalcPlusPlusService">
+
+      <wsdl:port binding="impl:CalcPlusPlusSoapBinding" name="CalcPlusPlus">
+
+         <wsdlsoap:address location="http://localhost:8080/CalcAvancadaWS/services/CalcPlusPlus"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

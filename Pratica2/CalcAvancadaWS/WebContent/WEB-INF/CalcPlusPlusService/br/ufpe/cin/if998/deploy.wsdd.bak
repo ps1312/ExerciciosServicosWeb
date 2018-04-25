@@ -1,0 +1,33 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CalcPlusPlusService WSDL service -->
+
+  <service name="CalcPlusPlus" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://if998.cin.ufpe.br"/>
+      <parameter name="wsdlServiceElement" value="CalcPlusPlusService"/>
+      <parameter name="schemaQualified" value="http://if998.cin.ufpe.br"/>
+      <parameter name="wsdlServicePort" value="CalcPlusPlus"/>
+      <parameter name="className" value="br.ufpe.cin.if998.CalcPlusPlusSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="CalcPlusPlus"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="raizQuadrada" qname="operNS:raizQuadrada" xmlns:operNS="http://if998.cin.ufpe.br" returnQName="retNS:raizQuadradaReturn" xmlns:retNS="http://if998.cin.ufpe.br" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:v" xmlns:pns="http://if998.cin.ufpe.br" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="potencia" qname="operNS:potencia" xmlns:operNS="http://if998.cin.ufpe.br" returnQName="retNS:potenciaReturn" xmlns:retNS="http://if998.cin.ufpe.br" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:v1" xmlns:pns="http://if998.cin.ufpe.br" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:v2" xmlns:pns="http://if998.cin.ufpe.br" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="potencia raizQuadrada"/>
+
+  </service>
+</deployment>
